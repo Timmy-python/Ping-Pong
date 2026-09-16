@@ -1,4 +1,12 @@
 from pygame import *
+font.init()
+
+font1 = font.Font(None, 50)
+win1 = font1.render('PLAYER 1 WINS!', True, (255,255,0))
+win2 = font1.render("PLAYER 2 WINS!", True, (255,255,0))
+
+speed_x = 5
+speed_y = 5
 
 back = (200, 255, 255)
 win_width = 600
@@ -52,9 +60,30 @@ while game:
     for e in event.get():
         if e.type == QUIT:
             game = False
+
+    if Ball.rect.x < 0:
+        finish = True
+        window.blit(win2, (200,200))
+
+    elif Ball.rect.x > 550:
+        finish = True
+        window.blit(win1, (200,200))
     
     if finish != True:
         window.fill(back)
+
+        if sprite.collide_rect(Ping, Ball) or sprite.collide_rect(Pong, Ball):
+            speed_x *= -1
+            speed_y *= 1
+
+        Ball.rect.x += speed_x
+        Ball.rect.y += speed_y
+    
+        if Ball.rect.y > 350 or Ball.rect.y < 0:
+            speed_y *= -1
+
+        if Ball.rect.x > 560 or Ball.rect.x < 0:
+            speed_x *= -1
 
         Ping.update()
         Ping.reset()
