@@ -1,4 +1,4 @@
-Ping-Pong game. It is super cool Ping-Pong game. You can Ping and you can Pong. Or you can Ping-Pong
+Ping-Pong game. It is super cool Ping-Pong game. You can Ping and you can Pong. Or you can Ping-Pong. And it's also for two Players!
 
 For this program you must have installed:
 
